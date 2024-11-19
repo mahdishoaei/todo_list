@@ -1,23 +1,41 @@
 <template>
-  <div class="navbar flex w-full justify-center h-14 bg-gray-400">
+  <div
+    :class="{ 'bg-gray-900': themeState == 'dark' }"
+    class="navbar flex w-full justify-center h-14 bg-gray-400"
+  >
+    <div class="left-section w-1/3"></div>
     <div
-      class="flex h-14 w-20 justify-center"
+      class="flex h-14 w-1/3 justify-center"
       v-for="(item, index) in items"
       :key="index"
       @click="changeRoute(item.path)"
     >
-      <span
-        :class="{ 'active-route': item.path == route.path }"
-        class="w-12 h-14 text-center pt-6 cursor-pointer hover:text-gray-200"
-        >{{ item.title }}</span
+      <div
+        :class="{
+          'active-route': item.path == route.path,
+          'text-gray-100': themeState == 'dark',
+        }"
+        class="w-12 h-14 text-center pt-6 cursor-pointer hover:text-gray-300"
       >
+        <span>{{ item.title }}</span>
+      </div>
+    </div>
+    <div class="flex w-1/3 justify-end mt-5">
+      <ThemeSwicher />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import ThemeSwicher from "@/components/themeSwicher";
+import { usethemeStore } from "@/stores/theme";
+
+const themeStore = usethemeStore();
+const themeState = computed(() => {
+  return themeStore.theme;
+});
 
 const router = useRouter();
 const route = useRoute();

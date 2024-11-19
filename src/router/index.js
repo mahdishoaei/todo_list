@@ -2,23 +2,30 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    redirect: '/',
-    component: () => import('@/layout/index.vue'),
+    path: "/",
+    name: "home",
+    redirect: "/",
+    component: () => import("@/layout/index.vue"),
     children: [
       {
-        path: '/',
-        name: 'home',
+        path: "/",
+        name: "home",
         component: function () {
-          return import('@/pages/home/index.vue');
+          return import("@/pages/home/index.vue");
         },
       },
       {
-        path: '/create',
-        name: 'create',
+        path: "/create",
+        name: "create",
         component: function () {
-          return import('@/pages/create/index.vue');
+          return import("@/pages/create/index.vue");
+        },
+      },
+      {
+        path: "/list",
+        name: "list",
+        component: function () {
+          return import("@/pages/list/index.vue");
         },
       },
     ],

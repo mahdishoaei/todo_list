@@ -1,10 +1,14 @@
 <template>
-<div class="main-layout">
+  <div class="main-layout bg-gray-300 w-full h-screen">
     <div class="navbar">
-     navbar...
+      <Navigator />
     </div>
     <div class="router">
-        <router-view />
+      <RouterView />
     </div>
-</div>
+  </div>
 </template>
+
+<script setup>
+import Navigator from "@/components/navigator/index.vue";
+</script>

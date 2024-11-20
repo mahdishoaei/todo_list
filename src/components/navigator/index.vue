@@ -3,7 +3,9 @@
     :class="{ 'bg-gray-900': themeState == 'dark' }"
     class="navbar flex w-full justify-center h-14 bg-gray-400"
   >
-    <div class="left-section w-1/3"></div>
+    <div class="w-1/3">
+      <span class="px-2 font-normal text-lg">Todo List</span>
+    </div>
     <div
       class="flex h-14 w-1/3 justify-center"
       v-for="(item, index) in items"
@@ -30,9 +32,9 @@
 import { ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import ThemeSwicher from "@/components/themeSwicher";
-import { usethemeStore } from "@/stores/theme";
+import { useThemeStore } from "@/stores/theme";
 
-const themeStore = usethemeStore();
+const themeStore = useThemeStore();
 const themeState = computed(() => {
   return themeStore.theme;
 });

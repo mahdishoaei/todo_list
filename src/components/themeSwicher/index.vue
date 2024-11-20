@@ -7,9 +7,9 @@
 
 <script setup>
 import { computed } from "vue";
-import { usethemeStore } from "@/stores/theme";
+import { useThemeStore } from "@/stores/theme";
 
-const themeStore = usethemeStore();
+const themeStore = useThemeStore();
 const themeState = computed(() => {
   return themeStore.theme;
 });
